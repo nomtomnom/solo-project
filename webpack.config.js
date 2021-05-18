@@ -21,8 +21,17 @@ module.exports = {
           },
         },
       },
+      {
+        test: /.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /.s[ca]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
     ],
   },
+  devTool: 'eval',
   devServer: {
     publicPath: '/build',
   },
