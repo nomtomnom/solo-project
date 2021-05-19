@@ -5,13 +5,11 @@ function NavBar() {
   const context = useContext(AuthContext);
   console.log('navbar context', context);
 
-  // const loggedIn = 'heya';
-  const loggedIn = context.login ? 'username' : 'Log In';
+  const loggedIn = context.loginState ? 'UserName Display' : 'Log In / Sign Up Toggle';
 
   return (
     <div>
-      <p>NavBar</p>
-      <p>{loggedIn}</p>
+      <p>NavBar || {loggedIn} </p>
     </div>
   );
 }

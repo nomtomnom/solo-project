@@ -25,6 +25,7 @@ userController.create = (req, res, next) => {
 
 userController.verify = (req, res, next) => {
   const { username, password } = req.body;
+  console.log('user data received!', { username, password });
 
   User
     .findOne({ username })

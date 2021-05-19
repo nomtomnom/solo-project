@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const UserController = require('./controllers/UserController');
 
@@ -57,6 +58,7 @@ app.get('/', (req, res) => {
 // 404 & ERROR HANDLING
 
 app.use((req, res) => {
+  console.log('404');
   return res.sendStatus(404);
 })
 

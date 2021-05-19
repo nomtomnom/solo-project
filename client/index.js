@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import DisplayView from './Views/Display';
@@ -9,23 +9,26 @@ import NavBar from './Components/NavBar';
 import AuthContext from './Context/authContext';
 
 function App() {
-  console.log('React App rendering');
-  const [login, setLogin] = useState(false);
-  const [userID, setUserID] = useState(null);
-  const [username, setUsername] = useState(null);
+  console.log('app rerender');
+  const { loginState, userID, username, verifyLogin } = AuthContext._currentValue;
+  const [localLogin, setLocalLogin] = useState(loginState);
 
-  const child = login ? <DisplayView /> : <LoginView />
 
-  const handleClick = () => {
-    setLogin(!login);
-  }
+  useEffect(() => {
+    console.log('App rerender from useEffect')
+  }, [loginState]);
+
+  // render components depending on login status
+  const child = localLogin ? <DisplayView /> : <LoginView />
 
   return (
     <div>
-      <AuthContext.Provider value={{ login, userID, username }}>
+      <AuthContext.Provider value={{ loginState, userID, username, verifyLogin }}>
         <NavBar />
         {child}
-        <button onClick={handleClick} />
+        <button onClick={() => setLocalLogin(!localLogin)}>
+          Manual Login Toggle
+        </button>
       </AuthContext.Provider>
     </div>
   )
