@@ -31,7 +31,7 @@ module.exports = {
       },
     ],
   },
-  devTool: 'eval',
+
   devServer: {
     publicPath: '/build',
   },
