@@ -13,3 +13,12 @@ button {
   border-radius: 4px;
   background-color: cornflowerblue;
 }
+
+.red {
+  color: red;
+}
+
+.dangerous {
+  border: red;
+  background-color: red;
+}

@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: {
-    src: './client/index.js',
+    src: './client/app.js',
   },
   output: {
     filename: 'bundle.js',
@@ -31,7 +31,6 @@ module.exports = {
       },
     ],
   },
-
   devServer: {
     publicPath: '/build',
     compress: true,

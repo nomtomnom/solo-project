@@ -5,6 +5,8 @@ const authTextEntry = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  
+
   return (
     <div className='text-entry'>
       <p>

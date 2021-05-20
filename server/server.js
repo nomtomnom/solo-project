@@ -27,6 +27,7 @@ mongoose.connect(mongoURI, {
 // DATA PARSE
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 // ENDPOINTS
 app.post('/signup', UserController.create, (req, res) => {
@@ -62,6 +63,7 @@ app.use((req, res) => {
   return res.sendStatus(404);
 })
 
+// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   const defaultErr = {
     status: 400,
