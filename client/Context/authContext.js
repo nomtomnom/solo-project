@@ -4,8 +4,11 @@ const defaultContext = {
   loginState: false,
   userID: null,
   username: null,
+  signUpState: true,
+  createAccount: () => { },
   verifyLogin: () => { },
   logout: () => { },
+  toggleSignUp: () => { },
 }
 
 export const AuthContext = React.createContext(defaultContext);
@@ -48,7 +51,7 @@ const AuthContextProvider = (props) => {
       });
   }
 
-  const signUp = ({ username, password }) => {
+  const createAccount = ({ username, password }) => {
     fetch('/signup', {
       method: 'POST',
       headers: {
@@ -62,7 +65,6 @@ const AuthContextProvider = (props) => {
         setState({
           ...state,
           userID: data.id,
-          
         })
       })
   }
@@ -76,11 +78,22 @@ const AuthContextProvider = (props) => {
     })
   }
 
+  const toggleSignUp = () => {
+    console.log('changing signUpState', state.signUpState);
+    
+    setState({
+      ...state,
+      signUpState: !state.signUpState,
+    });
+  }
+
   // init state
   const initState = {
     ...defaultContext,
     verifyLogin: verifyLogin,
-    logout: logout
+    logout: logout,
+    toggleSignUp: toggleSignUp,
+    createAccount: createAccount,
   };
 
   const [state, setState] = useState(initState);

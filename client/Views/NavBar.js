@@ -1,30 +1,31 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { AuthContext } from '../Context/authContext';
 
 function NavBar() {
-  const { loginState, username, logout } = useContext(AuthContext);
+  const { loginState,
+    username,
+    logout,
+    signUpState,
+    toggleSignUp
+  } = useContext(AuthContext);
 
-  const tempFunc = () => {
-    console.log('honk :o)')
-  };
-
+  console.log('sign up state in navbar', signUpState);
   // SHOW WHEN SIGNED IN
   const logoutButton = <button className="dangerous" onClick={logout}>LOG OUT</button>;
 
-  // SHOW ON LOG IN PAGE
-  const signUpButton = <button onClick={tempFunc}>SIGN UP</button>
-
-  // SHOW ON SIGN UP PAGE
-  const logInButton =  <button onClick={tempFunc}>LOG IN</button>
-
-
+  // SHOW ON SIGN UP PAGE / LOG IN PAGE
+  const buttonText = signUpState
+    ? 'LOG IN'
+    : 'SIGN UP';
+  
   return (
     <div className="container">
       <p>
         <span>NavBar</span>
-        <span>{loginState ? `|| ${username} ||` : null}</span>
-        <span>{loginState ? logoutButton : otherbutton }</span>
-        <span>{}</span>
+        <span>{loginState ? `~~~ Hi, ${username}! ~~~` : null}</span>
+        <span>{loginState
+          ? logoutButton
+          : <button onClick={toggleSignUp}>{buttonText}</button>}</span>
       </p>
     </div>
   );

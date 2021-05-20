@@ -35,7 +35,9 @@ app.use(cors());
 app.use('/list', listRouter);
 app.use('/item', itemRouter);
 
-// ENDPOINTS
+// USER ENDPOINTS
+// TO-DO: put into individual router? 
+// TO-DO: add update, delete functionality
 app.post('/signup', UserController.signUp, (req, res) => {
   return res.status(200).send({
     id: res.locals.userid,

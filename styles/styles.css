@@ -1,0 +1,28 @@
+div {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 5px;
+  margin: 10px;
+}
+
+button {
+  min-height: 25px;
+  width: 100px;
+  padding: 5px;
+  border: 1px solid cornflowerblue;
+  border-radius: 4px;
+  background-color: cornflowerblue;
+}
+
+.container {
+  display: flex;
+}
+
+.red {
+  color: red;
+}
+
+.dangerous {
+  border: red;
+  background-color: red;
+}

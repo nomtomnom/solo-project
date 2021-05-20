@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { AuthContext } from './../Context/AuthContext';
-import AuthTextEntry from './../Components/AuthTextEntry';
+import { AuthContext } from '../Context/AuthContext';
+import AuthTextEntry from '../Components/AuthTextEntry';
 
-const SignupView = () => {
+const SignUpView = () => {
   const { createAccount } = useContext(AuthContext);
 
   return (
@@ -13,4 +13,4 @@ const SignupView = () => {
   )
 }
 
-export default SignupView;
+export default SignUpView;

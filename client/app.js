@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './../styles/styles.css';
 
 import Content from './content';
-
 import AuthContextProvider from './Context/authContext';
 
 function App() {

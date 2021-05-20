@@ -12,18 +12,19 @@ const User = mongoose.model('User', userSchema);
 
 // List Model
 const listSchema = new Schema({
-  userId: { type: String, required: true },
-  title: { type: String, required: true },
+  title: { type: String, required: true, unique: true },
+  userID: { type: String, required: true },
+  chartType: { type: String, required: true },
 });
 
 const List = mongoose.model('List', listSchema);
 
 // Item Model
 const itemSchema = new Schema({
-  userId: { type: String, required: true },
-  listId: { type: String, required: true },
-  Date: { type: Date, required: true },
-  value: { type: Number, required: true }
+  date: { type: Date, required: true },
+  value: { type: Number, required: true },
+  userID: { type: String, required: true },
+  listID: { type: String, required: true },
 });
 
 const Item = mongoose.model('Item', itemSchema);

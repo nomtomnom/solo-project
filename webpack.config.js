@@ -33,12 +33,9 @@ module.exports = {
   },
   devServer: {
     publicPath: '/build',
-    compress: true,
     proxy: {
-      '/login': {
-        target: 'http://localhost:3000',
-        changeOrigin: true
-      },
+      '/': 'http://localhost:3000',
     },
+    hot: true,
   },
 }

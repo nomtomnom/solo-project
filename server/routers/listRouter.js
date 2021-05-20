@@ -1,15 +1,16 @@
 const express = require('express');
+const ListController = require('./../controllers/ListController');
 
 const router = express.Router();
 
-// GET ONE
-router.get('/', (req, res) => {
-  return res.send({ list: res.locals.list })
+// CREATE NEW
+router.post('/', ListController.create, (req, res) => {
+  return res.send({ list: res.locals.list });
 });
 
-// CREATE NEW
-router.post('/', (req, res) => {
-  return res.send({ list: res.locals.list });
+// GET ONE
+router.get('/', ListController.getOne, (req, res) => {
+  return res.send({ list: res.locals.list })
 });
 
 // EXTENSION:
