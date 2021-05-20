@@ -1,21 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 
-import DisplayView from './Views/Display';
+import ListDisplayView from './Views/ListDisplay';
 import LoginView from './Views/Login';
 // import SignupView from './Views/Signup';
-import NavBar from './Components/NavBar';
+import NavBar from './Views/NavBar';
 
 import { AuthContext } from './Context/authContext';
 
 const Content = () => {
   console.log('app rerender');
   const { loginState } = useContext(AuthContext);
+  const [state, setState] = useState(true);
+
+  // look into react fragments? <> </>
 
 
-  // render components depending on login status
-  const child = loginState ? <DisplayView /> : <LoginView />
-
-  // const updated = username ? 'Updated & Refreshed!' : null;
+  const loginOrSignUp = 
+  // render different components depending on login status
+  const child = loginState ? <ListDisplayView /> : <LoginView />
 
   return(
     <div>

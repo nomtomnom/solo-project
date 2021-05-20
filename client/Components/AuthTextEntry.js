@@ -25,7 +25,7 @@ const authTextEntry = (props) => {
         onClick={() => props.onSubmit({ username, password })}
         value='Submit'
       >
-        Submit
+        {props.title}
       </button>
     </div>
   );

@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const UserController = require('./controllers/UserController');
+const listRouter = require('./routers/listRouter');
+const itemRouter = require('./routers/itemRouter');
 
 const app = express();
 const PORT = 3000;
@@ -29,8 +31,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+// ROUTERS
+app.use('/list', listRouter);
+app.use('/item', itemRouter);
+
 // ENDPOINTS
-app.post('/signup', UserController.create, (req, res) => {
+app.post('/signup', UserController.signUp, (req, res) => {
   return res.status(200).send({
     id: res.locals.userid,
     name: res.locals.username

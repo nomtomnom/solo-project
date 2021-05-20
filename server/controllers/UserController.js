@@ -4,7 +4,7 @@ const { User } = require('./../models/Models');
 
 const userController = {};
 
-userController.create = (req, res, next) => {
+userController.signUp = (req, res, next) => {
   // get username and password from request body
   const { username, password } = req.body;
 

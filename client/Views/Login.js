@@ -7,8 +7,8 @@ const LoginView = () => {
 
   return (
     <div>
-      <p>Login Field</p>
-      <AuthTextEntry onSubmit={verifyLogin}/>
+      Log In
+      <AuthTextEntry onSubmit={verifyLogin} title="Log In" />
     </div>
   );
 }

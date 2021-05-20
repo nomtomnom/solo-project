@@ -48,6 +48,25 @@ const AuthContextProvider = (props) => {
       });
   }
 
+  const signUp = ({ username, password }) => {
+    fetch('/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+      body: JSON.stringify({ username, password })
+    })
+      .then(data => data.json())
+      .then(data => {
+        console.log(data);
+        setState({
+          ...state,
+          userID: data.id,
+          
+        })
+      })
+  }
+
   const logout = () => {
     setState({
       ...state,
