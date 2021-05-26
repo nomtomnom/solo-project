@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { ListContext } from '../Context/ListContext';
 
 import Graph from '../Components/Graph';
 import Chart from '../Components/Chart';
@@ -6,14 +7,18 @@ import Chart from '../Components/Chart';
 // retrieve List & Item Data
 // pass down relevant data to Graph & Chart
 const ListDisplayView = () => {
-  const itemsArr = [{ date: 'today', value: '150' }, { date: 'yestrerday', value: '155' }];
+  const [refresh, setRefresh] = useState('')
+  const { listID, fetchItems } = useContext(ListContext);
+
+  useEffect(() => {
+    fetchItems({ listID });
+  }, [refresh]);
 
   return (
-    <div>
-      List Display
+    <>
       <Graph />
-      <Chart items={itemsArr} />
-    </div>
+      <Chart />
+    </>
   )
 }
 

@@ -5,7 +5,11 @@ const authTextEntry = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  
+  // state = {
+  //   username, password
+  // }
+
+  // setState({username: e.target.value})
 
   return (
     <div className='text-entry'>
@@ -23,7 +27,6 @@ const authTextEntry = (props) => {
       </p>
       <button
         onClick={() => props.onSubmit({ username, password })}
-        value='Submit'
       >
         {props.title}
       </button>

@@ -1,21 +1,22 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+import React, { useContext } from 'react';
 import Item from './Item';
+import { ListContext } from '../Context/ListContext';
 
 // creates ITEM components (iterate through item array received from server)
 // displays ITEM components
 
-function Chart (props) {
-  console.log('chart props', props, Array.isArray(props.items));
-  const { items } = props;
+function Chart() {
+  const { items } = useContext(ListContext);
+  
   const itemList = items.map(item => {
-    <Item date={item.date} value={item.value} />
+    return <Item date={item.date} value={item.value} key={item._id} />
   });
 
   return (
     <div>
-      <p>Chart</p>
+      Chart
       {itemList}
-      <Item date="woah" value="nelly" />
     </div>
   );
 }

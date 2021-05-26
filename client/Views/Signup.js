@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../Context/AuthContext';
 import AuthTextEntry from '../Components/AuthTextEntry';
+import { AuthContext } from '../Context/AuthContext';
 
 const SignUpView = () => {
-  const { createAccount } = useContext(AuthContext);
+  const { signUp } = useContext(AuthContext);
 
   return (
-    <div>
-      <p>Sign Up</p>
-      <AuthTextEntry onSubmit={createAccount} title="Sign Up" />
-    </div>
-  )
+    <>
+      Sign Up
+      <AuthTextEntry onSubmit={signUp} title="Sign Up" />
+    </>
+  );
 }
 
 export default SignUpView;

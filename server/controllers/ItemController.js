@@ -3,12 +3,11 @@ const { Item } = require('./../models/Models');
 const ItemController = {};
 
 ItemController.getAll = (req, res, next) => {
-  const { userID, listID } = req.body;
+  const { listID } = req.params;
 
   Item
-    .find({ userID, listID })
+    .find({ listID })
     .then(data => {
-      console.log('item data', data);
       res.locals.items = data;
       return next();
     })

@@ -5,9 +5,9 @@ const defaultContext = {
   userID: null,
   username: null,
   signUpState: true,
-  createAccount: () => { },
+  signUp: () => { },
   verifyLogin: () => { },
-  logout: () => { },
+  logoutFunc: () => { },
   toggleSignUp: () => { },
 }
 
@@ -51,15 +51,19 @@ const AuthContextProvider = (props) => {
       });
   }
 
-  const createAccount = ({ username, password }) => {
-    fetch('/signup', {
+  const signUp = ({ username, password }) => {
+    console.log('creating account');
+
+    fetch('http://localhost:3000/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
       },
       body: JSON.stringify({ username, password })
     })
-      .then(data => data.json())
+      .then(data => {
+        return data.json()
+      })
       .then(data => {
         console.log(data);
         setState({
@@ -67,9 +71,10 @@ const AuthContextProvider = (props) => {
           userID: data.id,
         })
       })
+      .catch(err => console.log('CREATE ACCOUNT ERROR', err));
   }
 
-  const logout = () => {
+  const logoutFunc = () => {
     setState({
       ...state,
       loginState: false,
@@ -81,9 +86,11 @@ const AuthContextProvider = (props) => {
   const toggleSignUp = () => {
     console.log('changing signUpState', state.signUpState);
     
+    const newState = !state.signUpState;
+
     setState({
       ...state,
-      signUpState: !state.signUpState,
+      signUpState: newState,
     });
   }
 
@@ -91,15 +98,15 @@ const AuthContextProvider = (props) => {
   const initState = {
     ...defaultContext,
     verifyLogin: verifyLogin,
-    logout: logout,
+    logoutFunc: logoutFunc,
     toggleSignUp: toggleSignUp,
-    createAccount: createAccount,
+    signUp: signUp,
   };
 
   const [state, setState] = useState(initState);
 
   return (
-    <div>
+    <>
       <AuthContext.Provider value={state}>
         {props.children}
       </AuthContext.Provider>
@@ -113,7 +120,7 @@ const AuthContextProvider = (props) => {
       }>
         Manual Login Toggle
       </button>
-    </div>
+    </>
   );
 }
 

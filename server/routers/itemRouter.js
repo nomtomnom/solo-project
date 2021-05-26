@@ -4,7 +4,7 @@ const ItemController = require('./../controllers/ItemController');
 const router = express.Router();
 
 // GET ALL
-router.get('/', ItemController.getAll, (req, res) => {
+router.get('/:listID', ItemController.getAll, (req, res) => {
   return res.send({ items: res.locals.items });
 });
 

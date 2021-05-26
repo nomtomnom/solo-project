@@ -1,17 +1,17 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../Context/authContext';
+import { AuthContext } from '../Context/AuthContext';
 
 function NavBar() {
   const { loginState,
     username,
-    logout,
+    logoutFunc,
     signUpState,
     toggleSignUp
   } = useContext(AuthContext);
 
   console.log('sign up state in navbar', signUpState);
   // SHOW WHEN SIGNED IN
-  const logoutButton = <button className="dangerous" onClick={logout}>LOG OUT</button>;
+  const logoutButton = <button className="dangerous" onClick={logoutFunc}>LOG OUT</button>;
 
   // SHOW ON SIGN UP PAGE / LOG IN PAGE
   const buttonText = signUpState

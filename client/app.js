@@ -1,9 +1,10 @@
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './../styles/styles.css';
+import './../styles/main.css';
 
-import Content from './content';
-import AuthContextProvider from './Context/authContext';
+import Content from './content.js';
+import AuthContextProvider from './Context/AuthContext';
 
 function App() {
   console.log('app rerender');
