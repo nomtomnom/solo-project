@@ -14,7 +14,7 @@ const authTextEntry = (props) => {
   return (
     <div className='text-entry'>
       <p>
-        Username: 
+        Username Plz: 
         <input
           onChange={(e) => setUsername(e.target.value)}
         />
